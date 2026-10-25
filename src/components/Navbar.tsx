@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Phone, Search, UserCheck } from 'lucide-react';
+import { Menu, X, Phone, Search, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
   onOpenRegister: () => void;
@@ -10,16 +10,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-xl bg-[#081528]/90 border-b border-cyan-500/20 transition-all shadow-lg shadow-slate-950/40">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-2xl bg-[#081528]/80 border-b border-white/15 transition-all shadow-xl shadow-sky-950/30">
       
       {/* Top Patronage Announcement Bar */}
-      <div className="bg-gradient-to-r from-[#0d2138] via-[#16385c] to-[#0d2138] border-b border-amber-400/20 py-1.5 px-4 text-xs text-center text-cyan-200 flex items-center justify-center gap-3">
+      <div className="bg-gradient-to-r from-blue-900/40 via-sky-800/40 to-blue-900/40 border-b border-white/10 py-1.5 px-4 text-xs text-center text-cyan-200 flex items-center justify-center gap-3">
         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-300 font-bold text-[10px] uppercase tracking-wider">
           Official Trust
         </span>
-        <span className="hidden sm:inline text-slate-300">Organized with the support of</span>
+        <span className="hidden sm:inline text-slate-300">Under the Guidance of</span>
         <strong className="text-white font-bold tracking-wide">Malviya Seva Sansthan</strong>
-        <span className="hidden md:inline text-slate-400">• National Rank Scholarship & Reward Assessment</span>
+        <span className="hidden md:inline text-cyan-200/70">• National Rank Scholarship & Reward Assessment</span>
         <a 
           href="tel:+917236008947" 
           className="ml-2 inline-flex items-center gap-1.5 text-amber-300 hover:text-amber-200 transition-colors font-semibold"
@@ -38,20 +38,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
             <img 
               src="/logo.jpg" 
               alt="Ray Talent Hunt Olympiad Official Logo" 
-              className="w-12 h-12 rounded-2xl object-cover border-2 border-amber-400/60 shadow-md shadow-amber-500/20 group-hover:scale-105 group-hover:border-amber-300 transition-all"
+              className="w-12 h-12 rounded-2xl object-cover border-2 border-amber-400/60 shadow-lg shadow-amber-500/20 group-hover:scale-105 group-hover:border-amber-300 transition-all"
             />
             <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-amber-400 border border-[#081528]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-cyan-400 border border-[#081528]"></span>
             </span>
           </div>
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-amber-300 transition-colors font-sans">
+              <span className="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors font-sans">
                 RAY TALENT HUNT
               </span>
-              <span className="px-2 py-0.5 rounded-md bg-amber-500/20 border border-amber-400/40 text-[10px] font-black text-amber-300 tracking-widest uppercase">
+              <span className="px-2 py-0.5 rounded-md bg-amber-400/20 border border-amber-400/40 text-[10px] font-black text-amber-300 tracking-widest uppercase">
                 OLYMPIAD
               </span>
             </div>
@@ -61,39 +61,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
           </div>
         </a>
 
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-slate-300">
-          <a href="#about" className="hover:text-amber-300 transition-colors py-1">About</a>
-          <a href="#olympiad" className="hover:text-amber-300 transition-colors py-1">Syllabus & Exam</a>
-          <a href="#awards" className="hover:text-amber-300 transition-colors py-1 flex items-center gap-1.5">
+        {/* Desktop Navigation Links in Frosted Pill Container (SkillNest Style) */}
+        <nav className="hidden lg:flex items-center gap-1 p-1.5 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 text-xs font-bold text-slate-200 shadow-inner">
+          <a href="#" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all text-white bg-white/15">Home</a>
+          <a href="#about" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">About</a>
+          <a href="#olympiad" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Syllabus</a>
+          <a href="#awards" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all flex items-center gap-1.5">
             <span>5-Tier Awards</span>
-            <span className="px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500/30 to-yellow-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-bold">
-              Laptops & Medals
-            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
           </a>
-          <a href="#schools" className="hover:text-amber-300 transition-colors py-1">For Schools</a>
-          <a href="#gallery" className="hover:text-amber-300 transition-colors py-1">Event Gallery</a>
-          <a href="#faq" className="hover:text-amber-300 transition-colors py-1">FAQs</a>
-          <a href="#contact" className="hover:text-amber-300 transition-colors py-1">Contact</a>
+          <a href="#schools" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">For Schools</a>
+          <a href="#gallery" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Gallery</a>
+          <a href="#faq" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">FAQs</a>
+          <a href="#contact" className="px-4 py-2 rounded-full hover:bg-white/20 hover:text-white transition-all">Contact</a>
         </nav>
 
         {/* Action Buttons */}
         <div className="hidden sm:flex items-center gap-3">
           <button
             onClick={onOpenResult}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0f243d] border border-cyan-500/40 hover:border-cyan-400 text-cyan-200 hover:text-white text-xs font-bold tracking-wide transition-all shadow-sm hover:shadow-cyan-500/20 cursor-pointer"
+            className="btn-trendy flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/25 text-cyan-200 hover:text-white text-xs font-bold tracking-wide transition-all cursor-pointer"
           >
             <Search className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Check Result / Roll No</span>
+            <span>Check Result</span>
           </button>
 
           <button
             onClick={onOpenRegister}
-            className="relative group overflow-hidden flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 font-black text-xs tracking-wider uppercase shadow-lg shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.03] active:scale-[0.98] transition-all cursor-pointer"
+            className="btn-trendy flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 text-white font-black text-xs tracking-wider uppercase shadow-lg shadow-sky-500/40 border border-white/30 cursor-pointer"
           >
-            <UserCheck className="w-4 h-4 stroke-[2.5]" />
             <span>Register Now</span>
-            <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+            <ArrowUpRight className="w-4 h-4 stroke-[2.5]" />
           </button>
         </div>
 
@@ -101,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
         <div className="flex lg:hidden items-center gap-2">
           <button
             onClick={onOpenResult}
-            className="p-2 rounded-xl bg-[#0f243d] border border-cyan-500/40 text-cyan-300 text-xs font-semibold"
+            className="p-2 rounded-full bg-white/10 border border-white/20 text-cyan-300 text-xs font-semibold"
             title="Check Result"
           >
             <Search className="w-4 h-4" />
@@ -109,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl bg-[#0f243d] border border-slate-700 text-slate-200 hover:text-white"
+            className="p-2.5 rounded-xl bg-white/10 border border-white/20 text-slate-200 hover:text-white"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -120,26 +118,26 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-slate-800 bg-[#081528]/98 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-2xl">
-          <nav className="flex flex-col space-y-2.5 text-sm font-semibold text-slate-200">
+        <div className="lg:hidden border-b border-white/20 bg-[#081528]/98 px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-2xl">
+          <nav className="flex flex-col space-y-2 text-sm font-semibold text-slate-200">
             <a 
               href="#about" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               About Ray Talent Hunt
             </a>
             <a 
               href="#olympiad" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               Syllabus & Exam Pattern
             </a>
             <a 
               href="#awards" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300 flex items-center justify-between"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300 flex items-center justify-between"
             >
               <span>5-Tier Awards & Scholarships</span>
               <span className="px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold">Laptops</span>
@@ -147,40 +145,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
             <a 
               href="#schools" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               School Coordination & Affiliation
             </a>
             <a 
               href="#gallery" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               Event Gallery & Instagram Reels
             </a>
             <a 
               href="#faq" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               FAQs
             </a>
             <a 
               href="#contact" 
               onClick={() => setMobileMenuOpen(false)}
-              className="px-3 py-2 rounded-xl hover:bg-[#0f243d] hover:text-amber-300"
+              className="px-4 py-2.5 rounded-xl hover:bg-white/10 hover:text-cyan-300"
             >
               Contact & Helpline
             </a>
           </nav>
 
-          <div className="pt-4 border-t border-slate-800 space-y-2.5">
+          <div className="pt-4 border-t border-white/15 space-y-2.5">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenResult();
               }}
-              className="w-full py-3 rounded-xl bg-[#0f243d] border border-cyan-500/40 text-cyan-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
+              className="btn-trendy w-full py-3 rounded-full bg-white/10 border border-white/20 text-cyan-200 font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2"
             >
               <Search className="w-4 h-4 text-cyan-400" />
               <span>Check Result / Roll No</span>
@@ -191,10 +189,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenResult }) 
                 setMobileMenuOpen(false);
                 onOpenRegister();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-400 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-amber-500/30"
+              className="btn-trendy w-full py-3 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 text-white font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg shadow-sky-500/40"
             >
-              <UserCheck className="w-4 h-4 stroke-[2.5]" />
               <span>Register for Olympiad</span>
+              <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
         </div>

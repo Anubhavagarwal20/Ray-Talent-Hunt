@@ -6,12 +6,13 @@
   }
   
   body {
-    background-color: #060913;
+    background: radial-gradient(circle at 50% 0%, #1e40af 0%, #0c1a30 45%, #050b14 100%);
     color: #F8FAFC;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     overflow-x: hidden;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
   }
 
   /* Custom subtle scrollbar */
@@ -19,22 +20,106 @@
     width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: #070B19;
+    background: #081220;
   }
   ::-webkit-scrollbar-thumb {
-    background: #1E293B;
+    background: #0284c7;
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #0284C7;
+    background: #38bdf8;
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.05); }
+/* Subtle Perspective Grid (as in SkillNest reference) */
+.bg-perspective-grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-.animate-glow {
-  animation: pulseGlow 6s ease-in-out infinite;
+/* Glassmorphic Icy Panels */
+.glass-panel {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 20px 50px 0 rgba(2, 132, 199, 0.2);
+}
+
+.glass-card {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.14) 0%, rgba(2, 132, 199, 0.06) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow: 0 25px 60px 0 rgba(56, 189, 248, 0.25);
+}
+
+/* Button with 3D Hover, Shimmer Sweep, and Glow */
+.btn-trendy {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-trendy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-trendy:hover::before {
+  left: 100%;
+}
+
+.btn-trendy:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 25px -3px rgba(56, 189, 248, 0.5);
+}
+
+.btn-trendy:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Floating animation */
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.8deg); }
+}
+
+.animate-float {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatGentle 6s ease-in-out 2s infinite;
 }

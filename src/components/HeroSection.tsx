@@ -1,6 +1,7 @@
-import React from 'react';
-import { ArrowRight, Trophy, Sparkles, ShieldCheck, Search, Download, Star, Rocket, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowUpRight, Trophy, Sparkles, Award, Laptop, Users } from 'lucide-react';
 import { ThreeHeroScene } from './ThreeHeroScene';
+import { TiltCard } from './TiltCard';
 
 interface HeroSectionProps {
   onOpenRegister: () => void;
@@ -8,138 +9,145 @@ interface HeroSectionProps {
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRegister, onOpenResult }) => {
+  const [quickRoll, setQuickRoll] = useState('');
+
+  const handleQuickSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    onOpenResult();
+  };
+
   return (
-    <section className="relative overflow-hidden pt-4 pb-14 lg:py-16">
+    <section className="relative pt-4 pb-16 lg:py-16 overflow-hidden z-10">
       
-      {/* Outer ambient glow circles */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-tr from-cyan-600/20 via-blue-700/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute top-1/3 right-10 w-[550px] h-[550px] bg-gradient-to-br from-amber-500/15 via-rose-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+      {/* Background Soft Icy Glows */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-sky-500/20 via-blue-600/15 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/3 right-10 w-[500px] h-[500px] bg-gradient-to-bl from-cyan-400/20 via-blue-500/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Giant Rounded Educational Canvas (Inspired by References 2, 3, 4, 5) */}
-        <div className="relative rounded-[32px] sm:rounded-[40px] bg-gradient-to-b from-[#0b1b30] via-[#09172a] to-[#060f1c] border border-cyan-500/30 p-6 sm:p-10 lg:p-12 shadow-2xl shadow-cyan-950/40 overflow-hidden">
+        {/* ========================================================= */}
+        {/* HERO STAGE: Frosted Glass Panel with Perspective Grid */}
+        {/* (Directly mirroring the SkillNest reference layout)       */}
+        {/* ========================================================= */}
+        <div className="relative rounded-[36px] sm:rounded-[48px] bg-gradient-to-br from-blue-600/30 via-cyan-500/15 to-slate-950/60 backdrop-blur-2xl border border-white/25 shadow-2xl shadow-sky-950/50 p-6 sm:p-10 lg:p-14 overflow-hidden bg-perspective-grid">
           
-          {/* Subtle cosmic burst lines in background */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(56,189,248,0.12),transparent_60%)] pointer-events-none"></div>
-          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-amber-400/10 via-rose-500/5 to-transparent rounded-full blur-2xl pointer-events-none"></div>
+          {/* Internal Shimmer Radial Highlights */}
+          <div className="absolute -top-32 -left-32 w-96 h-96 bg-cyan-400/25 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
             
-            {/* Left Hero Column (7 Cols on Desktop) */}
+            {/* Left Column (7 Cols on Desktop) */}
             <div className="lg:col-span-7 flex flex-col items-start text-left">
               
-              {/* Trust Badge with Star (Cambridge-style trust banner) */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#122842] border border-amber-400/40 shadow-inner mb-6 backdrop-blur-md">
-                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-amber-400 text-slate-950 text-xs font-black">
+              {/* Frosted Pill Badge (As in SkillNest reference) */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white text-xs font-semibold shadow-inner mb-6 animate-float">
+                <span className="flex items-center justify-center w-5 h-5 rounded-full bg-cyan-400 text-slate-950 text-[10px] font-bold">
                   ★
                 </span>
-                <span className="text-xs font-bold text-amber-300">
-                  National Rank Scholarship & Reward Assessment
-                </span>
+                <span className="text-cyan-200">Transforming Skills Into Success</span>
+                <span className="text-white/40">•</span>
+                <span className="text-amber-300 font-bold">Malviya Seva Sansthan</span>
               </div>
 
-              {/* Main Creative Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-4">
-                Give Young Talent a <br />
-                <span className="bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  Stage to Shine.
+              {/* Main Headline (All Caps, Modern Sans Serif as in SkillNest) */}
+              <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-black text-white tracking-tight leading-[1.12] mb-5">
+                SHAPING MINDS, <br className="hidden sm:inline" />
+                BUILDING FUTURES <br />
+                <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-amber-300 bg-clip-text text-transparent">
+                  THROUGH SMARTER LEARNING
                 </span>
               </h1>
 
-              {/* Mission Motto */}
-              <div className="flex items-center gap-3 mb-6 p-3 rounded-2xl bg-[#0c1f36]/80 border border-cyan-500/30 backdrop-blur-sm max-w-xl">
-                <div className="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="text-sm sm:text-base font-extrabold text-white tracking-wide">
-                    “Nurturing Young Minds, Building Future Leaders”
-                  </p>
-                  <p className="text-xs text-cyan-200/80">
-                    Olympiad examination & scholarship platform for school students of <strong className="text-amber-300">Classes 1 to 10</strong>.
-                  </p>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed mb-8 max-w-xl">
-                Ray Talent Hunt Olympiad (RTHO) evaluates critical thinking, STEM aptitude, and logic through syllabus-aligned testing. Rewarding achievers with <strong className="text-white font-semibold">Laptops, Tablets, Smartwatches, Cash Grants, and Prestigious Medals</strong> presented right in school assemblies.
+              {/* Subtitle */}
+              <p className="text-sm sm:text-base text-cyan-100/90 font-normal leading-relaxed mb-8 max-w-xl">
+                Join a new era of education where innovation meets knowledge. Discover expert-led Olympiad assessments, practical skills, and 5-tier scholarships to achieve your goals.
               </p>
 
-              {/* Primary Call to Actions */}
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-8">
-                
-                {/* High-Impact Register CTA */}
+              {/* Icy Pill Search Input Box (Directly from SkillNest reference!) */}
+              <form onSubmit={handleQuickSearch} className="w-full max-w-md relative mb-8">
+                <div className="flex items-center p-1.5 rounded-full bg-slate-950/70 backdrop-blur-xl border border-white/30 shadow-xl focus-within:border-cyan-400 focus-within:ring-2 focus-within:ring-cyan-400/40 transition-all">
+                  <input
+                    type="text"
+                    placeholder="Type your Roll No or Mobile here..."
+                    value={quickRoll}
+                    onChange={(e) => setQuickRoll(e.target.value)}
+                    className="flex-1 px-5 py-2.5 bg-transparent text-sm text-white placeholder-slate-400 focus:outline-none"
+                  />
+                  <button
+                    type="submit"
+                    className="btn-trendy px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg shadow-sky-500/30 cursor-pointer"
+                  >
+                    <span>Check</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
+                <div className="flex items-center justify-between text-[11px] text-cyan-200/80 mt-2 px-3">
+                  <span>Sample Roll: <code className="text-amber-300 font-bold cursor-pointer underline" onClick={() => onOpenResult()}>RTHO-2025-0842</code></span>
+                  <span>Instant Scorecard & E-Certificate</span>
+                </div>
+              </form>
+
+              {/* Primary Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 mb-8">
                 <button
                   onClick={onOpenRegister}
-                  className="group relative overflow-hidden flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 font-black text-sm uppercase tracking-wider shadow-xl shadow-amber-500/30 hover:shadow-amber-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+                  className="btn-trendy flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 text-slate-950 font-black text-xs uppercase tracking-wider shadow-xl shadow-amber-500/30 cursor-pointer"
                 >
-                  <Rocket className="w-5 h-5" />
+                  <Trophy className="w-4 h-4" />
                   <span>Register for Olympiad</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                  <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                  <ArrowUpRight className="w-4 h-4" />
                 </button>
 
-                {/* Check Results CTA */}
-                <button
-                  onClick={onOpenResult}
-                  className="flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-[#10243d] border border-cyan-500/50 hover:border-cyan-400 text-cyan-200 hover:text-white font-bold text-sm transition-all shadow-md hover:shadow-cyan-500/20 cursor-pointer"
-                >
-                  <Search className="w-4 h-4 text-cyan-400" />
-                  <span>Check Results / Scorecard</span>
-                </button>
-
-                {/* Syllabus button */}
                 <a
                   href="#olympiad"
-                  className="flex items-center justify-center gap-2 px-4 py-4 rounded-2xl text-slate-400 hover:text-amber-300 text-xs font-semibold transition-colors"
+                  className="btn-trendy px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-bold text-xs uppercase tracking-wider transition-all"
                 >
-                  <Download className="w-4 h-4" />
-                  <span>Syllabus & Pattern</span>
+                  Explore Syllabus &rarr;
                 </a>
               </div>
 
-              {/* Official Accreditation Chip (Inspired by Cambridge Club Reference 2) */}
-              <div className="p-4 rounded-2xl bg-[#091729]/90 border border-slate-700/80 flex items-center gap-4 w-full sm:w-auto">
-                <div className="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center shrink-0">
-                  <Star className="w-6 h-6 text-amber-400 fill-amber-400" />
+              {/* Social Proof Avatar Stack (Directly from SkillNest reference) */}
+              <div className="flex items-center gap-3 pt-4 border-t border-white/15 w-full">
+                <div className="flex -space-x-2 overflow-hidden">
+                  <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-blue-500 flex items-center justify-center text-white text-xs font-bold">AS</div>
+                  <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-amber-500 flex items-center justify-center text-slate-950 text-xs font-bold">PS</div>
+                  <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-cyan-500 flex items-center justify-center text-slate-950 text-xs font-bold">RK</div>
+                  <div className="inline-block h-8 w-8 rounded-full ring-2 ring-white bg-slate-900 flex items-center justify-center text-cyan-300 text-[10px] font-bold">+10k</div>
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-bold text-white uppercase tracking-wider">
-                      Official Trust & Patronage
-                    </span>
-                    <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
-                      Verified
-                    </span>
-                  </div>
-                  <p className="text-xs text-amber-300 font-semibold">
-                    Supported by Malviya Seva Sansthan
-                  </p>
-                  <p className="text-[11px] text-slate-400 mt-0.5">
-                    Authorized assessment body • Transparent evaluation & merit distribution
-                  </p>
+                <div className="text-xs text-cyan-100 font-medium">
+                  <strong className="text-white font-bold">10,000+ ambitious students</strong> already registered across UP & India
                 </div>
               </div>
 
             </div>
 
-            {/* Right Column: 3D Cosmic World (5 Cols on Desktop) */}
-            <div className="lg:col-span-5 relative w-full flex items-center justify-center">
+            {/* Right Column: 3D Scene + Floating Icy Badges */}
+            <div className="lg:col-span-5 relative w-full flex items-center justify-center min-h-[440px]">
               
-              {/* Floating Floating Badges */}
-              <div className="absolute top-2 right-4 z-20 flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#0d2138]/90 border border-amber-400/40 text-xs font-bold text-amber-300 backdrop-blur-md shadow-xl animate-bounce">
-                <Trophy className="w-4 h-4 text-amber-400" />
-                <span>Laptops, Tablets & Medals</span>
+              {/* Floating Icy Card 1 (Top Left) */}
+              <div className="absolute top-2 -left-4 z-20 hidden sm:flex items-center gap-2.5 p-3 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/40 shadow-xl shadow-sky-950/30 animate-float">
+                <div className="w-8 h-8 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
+                  <Laptop className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <span className="text-[10px] text-amber-300 uppercase tracking-widest block font-bold">National Topper</span>
+                  <span className="text-xs font-extrabold text-white">Laptop + ₹51,000</span>
+                </div>
               </div>
 
-              <div className="absolute bottom-16 left-4 z-20 hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-[#0d2138]/90 border border-cyan-400/40 text-xs font-bold text-cyan-300 backdrop-blur-md shadow-xl">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
-                <span>5-Tier Merit Recognition</span>
+              {/* Floating Icy Card 2 (Bottom Right) */}
+              <div className="absolute bottom-4 right-0 z-20 flex items-center gap-2.5 p-3 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/40 shadow-xl shadow-sky-950/30 animate-float-delayed">
+                <div className="w-8 h-8 rounded-xl bg-cyan-400 text-slate-950 flex items-center justify-center font-bold">
+                  <Award className="w-4 h-4" />
+                </div>
+                <div className="text-left">
+                  <span className="text-[10px] text-cyan-200 uppercase tracking-widest block font-bold">5-Tier Honors</span>
+                  <span className="text-xs font-extrabold text-white">Gold Medals & Tabs</span>
+                </div>
               </div>
 
-              {/* 3D WebGL Canvas Scene */}
+              {/* Real-Time Interactive 3D Canvas Scene */}
               <div className="w-full relative z-10">
                 <ThreeHeroScene />
               </div>
@@ -148,48 +156,70 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRegister, onOpen
 
           </div>
 
-          {/* Bottom Quick Feature Strips */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-cyan-500/20 text-xs text-slate-300">
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0">
-                <Trophy className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-bold text-white block">5-Tier Merit Honors</span>
-                <span className="text-[11px] text-slate-400">National to School Levels</span>
-              </div>
-            </div>
+        </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-cyan-400/20 text-cyan-300 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-4 h-4" />
+        {/* ========================================================= */}
+        {/* 3 FLOATING ICY TEXT BOARDS (Directly matching reference)   */}
+        {/* (The 3 frosted glowing cards below the hero with 3D Tilt) */}
+        {/* ========================================================= */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          
+          {/* Icy Board 1: Knowledge Paths / Partner Schools */}
+          <TiltCard className="h-full">
+            <div className="glass-card p-8 rounded-3xl relative overflow-hidden group cursor-pointer h-full">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-sky-400/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+              
+              <div className="w-12 h-12 rounded-2xl bg-sky-400/20 text-cyan-300 border border-white/20 flex items-center justify-center mb-5 group-hover:rotate-6 transition-transform">
+                <Users className="w-6 h-6" />
               </div>
-              <div>
-                <span className="font-bold text-white block">NCERT & CBSE Aligned</span>
-                <span className="text-[11px] text-slate-400">Classes 1 through 10</span>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-emerald-400/20 text-emerald-300 flex items-center justify-center shrink-0">
-                <Sparkles className="w-4 h-4" />
-              </div>
-              <div>
-                <span className="font-bold text-white block">In-Campus Ceremonies</span>
-                <span className="text-[11px] text-slate-400">Celebrated in School Assembly</span>
-              </div>
+              <h3 className="text-2xl font-black text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                100+ Partner Schools
+              </h3>
+              
+              <p className="text-xs sm:text-sm text-cyan-100/80 leading-relaxed">
+                Conducting in-campus Olympiad rounds with seamless logistics and morning assembly felicitation ceremonies across Uttar Pradesh.
+              </p>
             </div>
+          </TiltCard>
 
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-lg bg-rose-400/20 text-rose-300 flex items-center justify-center shrink-0">
-                <Rocket className="w-4 h-4" />
+          {/* Icy Board 2: Empowered Learning / 5-Tier Merit */}
+          <TiltCard className="h-full">
+            <div className="glass-card p-8 rounded-3xl relative overflow-hidden group cursor-pointer border-amber-400/30 h-full">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-amber-400/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+              
+              <div className="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 border border-white/20 flex items-center justify-center mb-5 group-hover:rotate-6 transition-transform">
+                <Trophy className="w-6 h-6" />
               </div>
-              <div>
-                <span className="font-bold text-white block">Dual Exam Modes</span>
-                <span className="text-[11px] text-slate-400">School OMR & Online</span>
-              </div>
+
+              <h3 className="text-2xl font-black text-white mb-2 group-hover:text-amber-300 transition-colors">
+                Empowered Recognition
+              </h3>
+              
+              <p className="text-xs sm:text-sm text-cyan-100/80 leading-relaxed">
+                5-Tier Merit Ladder: National, State, Zonal, District, and School toppers rewarded with Laptops, Tablets, Smartwatches, and Medals.
+              </p>
             </div>
-          </div>
+          </TiltCard>
+
+          {/* Icy Board 3: Thriving Community / 100% Transparency */}
+          <TiltCard className="h-full">
+            <div className="glass-card p-8 rounded-3xl relative overflow-hidden group cursor-pointer h-full">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-400/15 rounded-full blur-xl group-hover:scale-125 transition-transform"></div>
+              
+              <div className="w-12 h-12 rounded-2xl bg-cyan-400/20 text-cyan-300 border border-white/20 flex items-center justify-center mb-5 group-hover:rotate-6 transition-transform">
+                <Sparkles className="w-6 h-6" />
+              </div>
+
+              <h3 className="text-2xl font-black text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                Transparent Results
+              </h3>
+              
+              <p className="text-xs sm:text-sm text-cyan-100/80 leading-relaxed">
+                Instant roll-number lookups, detailed Student Performance Reports (SPR), and tamper-proof digital certificates with QR verification.
+              </p>
+            </div>
+          </TiltCard>
 
         </div>
 

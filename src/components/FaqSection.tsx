@@ -31,50 +31,50 @@ export const FaqSection: React.FC = () => {
     },
     {
       q: "How can a school become a registered examination center?",
-      a: "School Principals or Coordinators can submit the 'School Affiliation' form on this website or call our support lines at +91 7236008947 / +91 8448198656. We coordinate all logistics, student kits, and organize in-person award ceremonies at your campus."
+      a: "School Principals or Coordinators can submit the 'School Center' form on this website or call our support lines at +91 7236008947 / +91 8448198656. We coordinate all logistics, student kits, and organize in-person award ceremonies at your campus."
     }
   ];
 
   return (
-    <section id="faq" className="py-20 relative bg-[#060913]">
+    <section id="faq" className="py-20 relative z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4">
-            <HelpCircle className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4 animate-float">
+            <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
             <span>Got Questions?</span>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-            Frequently Asked Questions
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+            FREQUENTLY ASKED QUESTIONS
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
+          <p className="text-cyan-100/80 text-sm sm:text-base">
             Everything you need to know about Ray Talent Hunt Olympiad, eligibility, exams, and awards.
           </p>
         </div>
 
-        {/* Accordion */}
-        <div className="space-y-3">
+        {/* Accordion List */}
+        <div className="space-y-3.5">
           {faqs.map((faq, idx) => (
             <div
               key={idx}
-              className="rounded-2xl bg-slate-900/70 border border-slate-800 overflow-hidden transition-colors"
+              className="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer"
+                className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer"
               >
                 <span>{faq.q}</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-slate-400 transition-transform duration-200 shrink-0 ${
-                    openIndex === idx ? 'rotate-180 text-cyan-400' : ''
+                  className={`w-5 h-5 text-cyan-400 transition-transform duration-200 shrink-0 ${
+                    openIndex === idx ? 'rotate-180 text-amber-300' : ''
                   }`}
                 />
               </button>
 
               {openIndex === idx && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-slate-800/60 pt-3 animate-in fade-in duration-150">
+                <div className="px-5 pb-5 text-xs sm:text-sm text-cyan-100/90 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in duration-150">
                   {faq.a}
                 </div>
               )}
