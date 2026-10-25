@@ -47,13 +47,11 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/60">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <UserCheck className="w-4 h-4" />
-            </div>
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" alt="RTHO Logo" className="w-9 h-9 rounded-xl object-cover border border-amber-400/50 shadow" />
             <div>
-              <h3 className="text-base font-bold text-white">Ray Talent Hunt Registration</h3>
-              <p className="text-[11px] text-slate-400">Supported by Malviya Seva Sansthan</p>
+              <h3 className="text-base font-black text-white">Ray Talent Hunt Registration</h3>
+              <p className="text-[11px] text-amber-300 font-semibold">Supported by Malviya Seva Sansthan</p>
             </div>
           </div>
           

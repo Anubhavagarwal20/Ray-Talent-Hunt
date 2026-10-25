@@ -79,13 +79,11 @@ export const ResultLookupModal: React.FC<ResultLookupModalProps> = ({ isOpen, on
         
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/60">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <Trophy className="w-4 h-4" />
-            </div>
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" alt="RTHO Logo" className="w-9 h-9 rounded-xl object-cover border border-amber-400/50 shadow" />
             <div>
-              <h3 className="text-base font-bold text-white">Student Examination Portal</h3>
-              <p className="text-[11px] text-slate-400">Ray Talent Hunt Olympiad (RTHO)</p>
+              <h3 className="text-base font-black text-white">Student Examination Portal</h3>
+              <p className="text-[11px] text-amber-300 font-semibold">Ray Talent Hunt Olympiad (RTHO)</p>
             </div>
           </div>
           
