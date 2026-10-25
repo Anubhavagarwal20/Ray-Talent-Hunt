@@ -234,8 +234,13 @@ export const FullPageThreeCanvas: React.FC = () => {
     let targetMouseX = 0;
     let targetMouseY = 0;
 
+    let lastScrollY = window.scrollY;
+    let scrollVelocity = 0;
+
     const onScroll = () => {
       targetScrollY = window.scrollY;
+      scrollVelocity = (window.scrollY - lastScrollY) * 0.05;
+      lastScrollY = window.scrollY;
     };
 
     const onMouseMove = (e: MouseEvent) => {
@@ -268,21 +273,25 @@ export const FullPageThreeCanvas: React.FC = () => {
 
       // Smooth scroll interpolation
       scrollY += (targetScrollY - scrollY) * 0.08;
+      scrollVelocity *= 0.92; // Damping scroll velocity
+      
       // Parallax shift based on scroll
-      camera.position.y = -(scrollY * 0.005);
+      camera.position.y = -(scrollY * 0.007);
 
       // Smooth mouse interpolation
       mouseX += (targetMouseX - mouseX) * 0.05;
       mouseY += (targetMouseY - mouseY) * 0.05;
 
-      floatingGroup.rotation.y = mouseX * 0.2 + Math.sin(elapsed * 0.2) * 0.04;
-      floatingGroup.rotation.x = mouseY * 0.15;
+      floatingGroup.rotation.y = mouseX * 0.35 + Math.sin(elapsed * 0.25) * 0.05;
+      floatingGroup.rotation.x = mouseY * 0.2 + (scrollVelocity * 0.03);
 
-      // Animate Icy Boards
+      // Animate Icy Boards with Dynamic Surfing Waves
       icyBoards.forEach((board, idx) => {
-        board.mesh.position.y = board.baseY + Math.sin(elapsed * board.speedY + idx) * 0.35;
-        board.mesh.rotation.x += board.rotSpeedX;
-        board.mesh.rotation.y += board.rotSpeedY;
+        board.mesh.position.y = board.baseY + Math.sin(elapsed * board.speedY + idx) * 0.6;
+        board.mesh.position.x += Math.sin(elapsed * 0.5 + idx) * 0.003;
+        board.mesh.rotation.x += board.rotSpeedX * 1.5;
+        board.mesh.rotation.y += board.rotSpeedY * 1.5;
+        board.mesh.rotation.z = Math.sin(elapsed * 0.8 + idx) * 0.15;
       });
 
       // Animate Coins
