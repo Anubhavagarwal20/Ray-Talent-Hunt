@@ -9,6 +9,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('hero');
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -23,6 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
   useEffect(() => {
     const sections = ['hero', 'about', 'subjects', 'awards', 'schools', 'gallery', 'faq', 'contact'];
     const handleScroll = () => {
+      setIsScrolled(window.scrollY > 15);
       const scrollPos = window.scrollY + 200;
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -50,10 +52,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-2xl bg-[#071326]/90 border-b border-white/10 transition-all shadow-xl shadow-sky-950/30">
+    <header 
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-[#060c18]/45 backdrop-blur-xl border-b border-white/[0.08] shadow-lg shadow-black/15' 
+          : 'bg-[#060c18]/15 backdrop-blur-md border-b border-white/[0.04]'
+      }`}
+    >
       
-      {/* Sleek, Minimal Announcement Bar */}
-      <div className="bg-slate-950/80 border-b border-white/5 py-1.5 px-4 text-[11px] sm:text-xs text-center text-slate-300 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
+      {/* Sleek, Transparent Announcement Strip */}
+      <div className="bg-white/[0.02] border-b border-white/[0.04] py-1.5 px-4 text-[11px] sm:text-xs text-center text-slate-300 flex items-center justify-center gap-2 sm:gap-4 flex-wrap">
         <span className="inline-flex items-center gap-1.5 text-cyan-300 font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>Session 2026-27 Enrollment Open</span>
@@ -100,8 +108,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
           </div>
         </a>
 
-        {/* Desktop Navigation Links in Compact Frosted Island */}
-        <nav className="hidden lg:flex items-center gap-1 px-2 py-1 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-xs font-semibold text-slate-300 shadow-inner">
+        {/* Desktop Navigation Links in Compact Frosted Glass Capsule */}
+        <nav className="hidden lg:flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/[0.06] hover:bg-white/[0.08] backdrop-blur-2xl border border-white/[0.12] text-xs font-semibold text-slate-300 shadow-[0_4px_20px_rgba(0,0,0,0.1)] transition-colors">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -110,7 +118,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
                 href={link.href} 
                 className={`px-3.5 py-1.5 rounded-full transition-all ${
                   isActive 
-                    ? 'bg-white/15 text-white font-bold' 
+                    ? 'bg-white/20 text-white font-bold shadow-sm' 
                     : 'hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -124,7 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
         <div className="hidden sm:flex items-center">
           <button
             onClick={() => onOpenRegister('student')}
-            className="btn-trendy px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300 hover:from-blue-400 hover:to-cyan-200 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg shadow-cyan-500/20 cursor-pointer transition-all"
+            className="btn-trendy px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-300 hover:from-blue-400 hover:to-cyan-200 text-slate-950 font-black text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg shadow-cyan-500/25 cursor-pointer transition-all"
           >
             <span>Register Now</span>
             <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -147,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-b border-white/10 bg-[#061021]/98 backdrop-blur-2xl px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain text-left">
+        <div className="lg:hidden border-b border-white/10 bg-[#061021]/95 backdrop-blur-2xl px-5 py-6 space-y-4 animate-in slide-in-from-top-4 duration-200 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain text-left">
           
           {/* Navigation Links */}
           <nav className="flex flex-col space-y-1 text-sm font-semibold text-slate-200">
