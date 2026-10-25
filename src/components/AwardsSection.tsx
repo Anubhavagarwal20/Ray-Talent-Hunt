@@ -105,35 +105,35 @@ export const AwardsSection: React.FC = () => {
   const current = awardTiers[selectedTier];
 
   return (
-    <section id="awards" className="py-20 relative z-10">
+    <section id="awards" className="py-14 sm:py-20 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4 animate-float">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 animate-float">
             <Trophy className="w-3.5 h-3.5" />
             <span>5-Tier Merit Recognition Ladder</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3 sm:mb-4">
             Prestigious Awards & <br />
             <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-amber-300 bg-clip-text text-transparent">
               Merit Recognition Honors
             </span>
           </h2>
 
-          <p className="text-cyan-100/80 text-sm sm:text-base">
+          <p className="text-cyan-100/80 text-xs sm:text-base">
             Every achiever is celebrated at National, State, Zonal, District, and School tiers with authentic in-assembly recognition.
           </p>
         </div>
 
         {/* 5-Tier Frosted Pill Switcher with Mini Thumbnails */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-3 mb-8 sm:mb-10">
           {awardTiers.map((tier, idx) => (
             <button
               key={idx}
               onClick={() => setSelectedTier(idx)}
-              className={`btn-trendy px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer transition-all flex items-center gap-2.5 ${
+              className={`btn-trendy px-3 sm:px-5 py-2 sm:py-3 rounded-full text-[11px] sm:text-sm font-bold cursor-pointer transition-all flex items-center gap-2 ${
                 selectedTier === idx
                   ? 'bg-gradient-to-r from-sky-400 to-blue-600 text-white shadow-xl shadow-sky-500/40 border border-white/40 scale-105'
                   : 'bg-slate-900/60 backdrop-blur-md text-slate-300 hover:text-white border border-white/15'
@@ -142,7 +142,7 @@ export const AwardsSection: React.FC = () => {
               <img
                 src={tier.image}
                 alt={tier.level}
-                className="w-5 h-5 rounded-full object-cover border border-white/30"
+                className="w-4 h-4 sm:w-5 sm:h-5 rounded-full object-cover border border-white/30"
               />
               <span>{tier.level}</span>
             </button>
@@ -150,22 +150,22 @@ export const AwardsSection: React.FC = () => {
         </div>
 
         {/* Featured Icy Showcase Card with 3D Tilt */}
-        <TiltCard className="mb-10">
-          <div className={`p-8 sm:p-12 rounded-[36px] bg-gradient-to-br from-white/15 via-sky-500/10 to-slate-950/70 backdrop-blur-2xl border ${current.accentBorder} shadow-2xl relative overflow-hidden transition-all duration-300`}>
-            <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl ${current.accentGradient} rounded-full blur-3xl pointer-events-none`}></div>
+        <TiltCard className="mb-8 sm:mb-10">
+          <div className={`p-5 sm:p-10 md:p-12 rounded-3xl sm:rounded-[36px] bg-gradient-to-br from-white/15 via-sky-500/10 to-slate-950/70 backdrop-blur-2xl border ${current.accentBorder} shadow-2xl relative overflow-hidden transition-all duration-300`}>
+            <div className={`absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-bl ${current.accentGradient} rounded-full blur-3xl pointer-events-none`}></div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center relative z-10">
               
               {/* Left Info */}
-              <div className="lg:col-span-7 space-y-5">
-                <div className="flex items-center gap-3">
-                  <span className={`px-3.5 py-1 rounded-full border text-xs font-bold uppercase tracking-wider ${current.badgeColor}`}>
+              <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <span className={`px-3 py-0.5 sm:py-1 rounded-full border text-[11px] sm:text-xs font-bold uppercase tracking-wider ${current.badgeColor}`}>
                     {current.badge}
                   </span>
-                  <span className="text-xs text-cyan-200">Tier #{selectedTier + 1} of 5</span>
+                  <span className="text-[11px] sm:text-xs text-cyan-200">Tier #{selectedTier + 1} of 5</span>
                 </div>
 
-                <h3 className="text-2xl sm:text-4xl font-black text-white">
+                <h3 className="text-xl sm:text-3xl lg:text-4xl font-black text-white">
                   {current.awardTitle}
                 </h3>
 
@@ -173,12 +173,12 @@ export const AwardsSection: React.FC = () => {
                   <strong className="text-white">Eligibility:</strong> {current.eligibility}
                 </p>
 
-                <div className="space-y-3 pt-3">
+                <div className="space-y-2.5 sm:space-y-3 pt-2 sm:pt-3">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
                     <Sparkles className="w-4 h-4 text-amber-400" />
                     <span>Included Perks & Entitlements</span>
                   </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                     {current.perks.map((perk, pIdx) => (
                       <div key={pIdx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
                         <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
@@ -190,9 +190,9 @@ export const AwardsSection: React.FC = () => {
               </div>
 
               {/* Right Visual Product & Award Showcase Card */}
-              <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl relative overflow-hidden group/showcase">
+              <div className="lg:col-span-5 flex flex-col items-center justify-center p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl relative overflow-hidden group/showcase w-full">
                 {/* Product / Trophy Image with subtle zoom */}
-                <div className="relative w-full h-60 rounded-2xl overflow-hidden border border-white/20 mb-4 shadow-xl">
+                <div className="relative w-full h-48 sm:h-60 rounded-xl sm:rounded-2xl overflow-hidden border border-white/20 mb-4 shadow-xl">
                   <img
                     src={current.image}
                     alt={current.awardTitle}
@@ -201,20 +201,20 @@ export const AwardsSection: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                   
                   {/* Floating Tier Emblem on Top Left */}
-                  <div className="absolute top-3 left-3 p-2.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/30 text-white shadow-lg">
+                  <div className="absolute top-3 left-3 p-2 rounded-lg sm:rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/30 text-white shadow-lg">
                     {current.icon}
                   </div>
 
                   {/* Award Tag on Bottom Right */}
-                  <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-950/90 backdrop-blur-md border border-amber-400/50 text-[11px] font-bold text-amber-300 shadow">
+                  <div className="absolute bottom-3 right-3 px-2.5 sm:px-3 py-1 rounded-full bg-slate-950/90 backdrop-blur-md border border-amber-400/50 text-[10px] sm:text-[11px] font-bold text-amber-300 shadow">
                     Official Award Package
                   </div>
                 </div>
 
-                <h4 className="text-xl font-black text-white mb-1">{current.level}</h4>
-                <p className="text-xs text-amber-300 font-bold mb-4">{current.memento}</p>
+                <h4 className="text-lg sm:text-xl font-black text-white mb-1">{current.level}</h4>
+                <p className="text-xs text-amber-300 font-bold mb-3 sm:mb-4">{current.memento}</p>
                 
-                <div className="w-full pt-3 border-t border-white/10 text-xs text-cyan-200 flex items-center justify-center gap-2">
+                <div className="w-full pt-3 border-t border-white/10 text-[11px] sm:text-xs text-cyan-200 flex items-center justify-center gap-2">
                   <FileCheck2 className="w-4 h-4 text-cyan-400" />
                   <span>Includes Official QR-Verifiable Certificate</span>
                 </div>
@@ -225,21 +225,21 @@ export const AwardsSection: React.FC = () => {
         </TiltCard>
 
         {/* Universal Participation Certificate Banner */}
-        <div className="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
+        <div className="glass-panel p-5 sm:p-6 rounded-2xl sm:rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center sm:items-center gap-3 sm:gap-4 text-center sm:text-left">
             <div className="w-12 h-12 rounded-2xl bg-cyan-400/20 text-cyan-300 border border-cyan-400/30 flex items-center justify-center shrink-0">
               <FileCheck2 className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-base font-extrabold text-white">Participation & Rank Certificate for All Qualifiers</h4>
-              <p className="text-xs text-cyan-100/80">
+              <h4 className="text-sm sm:text-base font-extrabold text-white">Participation & Rank Certificate for All Qualifiers</h4>
+              <p className="text-xs text-cyan-100/80 mt-0.5">
                 Every participating student with a rank receives an official Student Performance Report (SPR) and digital certificate.
               </p>
             </div>
           </div>
           <a
             href="#olympiad"
-            className="btn-trendy px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-cyan-200 text-xs font-bold border border-white/20 whitespace-nowrap flex items-center gap-1.5"
+            className="btn-trendy w-full sm:w-auto px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-cyan-200 text-xs font-bold border border-white/20 whitespace-nowrap flex items-center justify-center gap-1.5"
           >
             <span>Review Exam Pattern</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

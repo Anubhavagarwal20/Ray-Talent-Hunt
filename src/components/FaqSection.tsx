@@ -32,11 +32,11 @@ export const FaqSection: React.FC = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 relative z-10">
+    <section id="faq" className="py-14 sm:py-24 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Head (Exact from d:\index.html line 215) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           
           <div className="lg:col-span-5 text-left">
             <div className="inline-flex items-center gap-2 text-cyan-300 text-xs font-extrabold uppercase tracking-widest mb-3">
@@ -44,7 +44,7 @@ export const FaqSection: React.FC = () => {
               <span>Quick answers</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.08] mb-4">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.08] mb-3 sm:mb-4">
               Clear information.<br />
               <span className="bg-gradient-to-r from-white via-cyan-200 to-sky-400 bg-clip-text text-transparent">
                 More confident families.
@@ -69,7 +69,10 @@ export const FaqSection: React.FC = () => {
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer"
+                  aria-expanded={openIndex === idx}
+                  aria-controls={`faq-answer-${idx}`}
+                  id={`faq-btn-${idx}`}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-cyan-400"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -80,7 +83,12 @@ export const FaqSection: React.FC = () => {
                 </button>
 
                 {openIndex === idx && (
-                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in duration-150">
+                  <div 
+                    id={`faq-answer-${idx}`}
+                    role="region"
+                    aria-labelledby={`faq-btn-${idx}`}
+                    className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in duration-150"
+                  >
                     {faq.a}
                   </div>
                 )}

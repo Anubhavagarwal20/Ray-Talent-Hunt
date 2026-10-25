@@ -18,8 +18,8 @@ export const MotionTicker: React.FC = () => {
     <div className="relative w-full overflow-hidden py-4 border-y border-white/15 bg-gradient-to-r from-blue-950/40 via-slate-950/80 to-blue-950/40 backdrop-blur-md z-20">
       
       {/* Side Vignettes */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#070e1c] to-transparent z-10 pointer-events-none"></div>
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#070e1c] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute left-0 top-0 bottom-0 w-10 sm:w-24 bg-gradient-to-r from-[#070e1c] to-transparent z-10 pointer-events-none"></div>
+      <div className="absolute right-0 top-0 bottom-0 w-10 sm:w-24 bg-gradient-to-l from-[#070e1c] to-transparent z-10 pointer-events-none"></div>
 
       {/* Marquee Track */}
       <div className="flex w-max animate-marquee space-x-8 text-xs font-bold text-slate-200 uppercase tracking-wider">

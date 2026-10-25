@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, UserCheck, School, CheckCircle2, ArrowRight, ShieldCheck } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface RegistrationModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialType?: 'student' | 'school';
 }
 
-export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, onClose }) => {
-  const [regType, setRegType] = useState<'student' | 'school'>('student');
+export const RegistrationModal: React.FC<RegistrationModalProps> = ({ 
+  isOpen, 
+  onClose,
+  initialType = 'student' 
+}) => {
+  const [regType, setRegType] = useState<'student' | 'school'>(initialType);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -19,6 +24,30 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
     city: '',
     examMode: 'offline'
   });
+  const [schoolFormData, setSchoolFormData] = useState({
+    schoolName: '',
+    coordinatorName: '',
+    phone: '',
+    city: '',
+    studentCount: '150 - 300 Students'
+  });
+
+  useEffect(() => {
+    if (isOpen) {
+      if (initialType) setRegType(initialType);
+      setSubmitted(false);
+    }
+  }, [isOpen, initialType]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -42,22 +71,32 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-xl bg-[#0a0f1d] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="reg-modal-title"
+    >
+      <div 
+        className="relative w-full max-w-xl bg-[#0a0f1d] border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/60">
           <div className="flex items-center gap-3">
             <img src="/logo.jpg" alt="RTHO Logo" className="w-9 h-9 rounded-xl object-cover border border-amber-400/50 shadow" />
             <div>
-              <h3 className="text-base font-black text-white">Ray Talent Hunt Registration</h3>
+              <h3 id="reg-modal-title" className="text-base font-black text-white">Ray Talent Hunt Registration</h3>
               <p className="text-[11px] text-amber-300 font-semibold">Supported by Malviya Seva Sansthan</p>
             </div>
           </div>
           
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            aria-label="Close registration dialog"
           >
             <X className="w-5 h-5" />
           </button>
@@ -99,23 +138,38 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                 <CheckCircle2 className="w-8 h-8" />
               </div>
               <div>
-                <h4 className="text-xl font-extrabold text-white">Registration Application Submitted!</h4>
+                <h4 className="text-xl font-extrabold text-white">
+                  {regType === 'student' ? 'Registration Application Submitted!' : 'School Affiliation Request Received!'}
+                </h4>
                 <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-md mx-auto">
-                  Thank you! Your application for <strong>{formData.name || 'Candidate'}</strong> has been registered. An enrollment confirmation has been routed to <strong>{formData.mobile || 'your mobile'}</strong>.
+                  {regType === 'student' ? (
+                    <>Thank you! The application for <strong>{formData.name || 'Candidate'}</strong> has been registered. An enrollment confirmation has been routed to <strong>{formData.mobile || 'your mobile'}</strong>.</>
+                  ) : (
+                    <>Thank you! Affiliation request for <strong>{schoolFormData.schoolName || 'Your School'}</strong> has been logged. Our regional coordinator will reach out to <strong>{schoolFormData.coordinatorName || 'the coordinator'}</strong> at <strong>{schoolFormData.phone || 'your phone'}</strong>.</>
+                  )}
                 </p>
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-left max-w-sm mx-auto text-xs space-y-2">
                 <div className="flex justify-between text-slate-400">
-                  <span>Application Reference:</span>
-                  <span className="font-mono font-bold text-amber-400">RTHO-2026-APP{Math.floor(1000 + Math.random() * 9000)}</span>
+                  <span>Reference ID:</span>
+                  <span className="font-mono font-bold text-amber-400">
+                    {regType === 'student' ? `RTHO-2026-APP${Math.floor(1000 + Math.random() * 9000)}` : `RTHO-SCH-${Math.floor(100 + Math.random() * 900)}`}
+                  </span>
                 </div>
+                {regType === 'student' ? (
+                  <div className="flex justify-between text-slate-400">
+                    <span>Selected Standard:</span>
+                    <span className="font-semibold text-white">{formData.standard}</span>
+                  </div>
+                ) : (
+                  <div className="flex justify-between text-slate-400">
+                    <span>Estimated Cohort:</span>
+                    <span className="font-semibold text-white">{schoolFormData.studentCount}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-slate-400">
-                  <span>Selected Standard:</span>
-                  <span className="font-semibold text-white">{formData.standard}</span>
-                </div>
-                <div className="flex justify-between text-slate-400">
-                  <span>Helpline Support:</span>
+                  <span>Coordinator Helpline:</span>
                   <span className="font-semibold text-cyan-300">+91 7236008947</span>
                 </div>
               </div>
@@ -124,7 +178,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                 onClick={handleReset}
                 className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all cursor-pointer"
               >
-                Done
+                Close & Return
               </button>
             </div>
           ) : (
@@ -148,7 +202,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
 
               {regType === 'student' ? (
                 <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 mb-1">Student Full Name *</label>
                       <input
@@ -157,7 +211,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         placeholder="e.g. Priya Singh"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-amber-400"
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-[16px] sm:text-xs focus:outline-none focus:border-amber-400"
                       />
                     </div>
                     <div>
@@ -165,7 +219,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                       <select
                         value={formData.standard}
                         onChange={(e) => setFormData({ ...formData, standard: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-amber-400"
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-amber-400"
                       >
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(c => (
                           <option key={c} value={`Class ${c}`}>Class {c}</option>
@@ -182,11 +236,11 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                       placeholder="e.g. City Public School, Pratapgarh"
                       value={formData.schoolName}
                       onChange={(e) => setFormData({ ...formData, schoolName: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-amber-400"
+                      className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-[16px] sm:text-xs focus:outline-none focus:border-amber-400"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 mb-1">WhatsApp / Contact Phone *</label>
                       <input
@@ -196,7 +250,7 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         placeholder="10 digit mobile number"
                         value={formData.mobile}
                         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-amber-400"
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-[16px] sm:text-xs focus:outline-none focus:border-amber-400"
                       />
                     </div>
                     <div>
@@ -207,14 +261,14 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         placeholder="e.g. Varanasi / Pratapgarh"
                         value={formData.city}
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-xs focus:outline-none focus:border-amber-400"
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-[16px] sm:text-xs focus:outline-none focus:border-amber-400"
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-xs font-bold text-slate-300 mb-1">Preferred Exam Mode</label>
-                    <div className="flex gap-4 text-xs text-slate-300">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 text-xs text-slate-300">
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
                           type="radio"
@@ -252,18 +306,22 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                       type="text"
                       required
                       placeholder="e.g. St. Joseph's Convent School"
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-400"
+                      value={schoolFormData.schoolName}
+                      onChange={(e) => setSchoolFormData({ ...schoolFormData, schoolName: e.target.value })}
+                      className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-cyan-400"
                     />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 mb-1">Principal / Coordinator Name *</label>
                       <input
                         type="text"
                         required
                         placeholder="Coordinator name"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-400"
+                        value={schoolFormData.coordinatorName}
+                        onChange={(e) => setSchoolFormData({ ...schoolFormData, coordinatorName: e.target.value })}
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-cyan-400"
                       />
                     </div>
                     <div>
@@ -272,24 +330,32 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
                         type="tel"
                         required
                         placeholder="Coordinator phone"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-400"
+                        value={schoolFormData.phone}
+                        onChange={(e) => setSchoolFormData({ ...schoolFormData, phone: e.target.value })}
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-cyan-400"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <div>
                       <label className="block text-xs font-bold text-slate-300 mb-1">District / City *</label>
                       <input
                         type="text"
                         required
                         placeholder="School location"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-400"
+                        value={schoolFormData.city}
+                        onChange={(e) => setSchoolFormData({ ...schoolFormData, city: e.target.value })}
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-cyan-400"
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-slate-300 mb-1">Estimated Participating Students</label>
-                      <select className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-400">
+                      <select 
+                        value={schoolFormData.studentCount}
+                        onChange={(e) => setSchoolFormData({ ...schoolFormData, studentCount: e.target.value })}
+                        className="w-full min-h-[44px] px-3.5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-[16px] sm:text-xs focus:outline-none focus:border-cyan-400"
+                      >
                         <option>50 - 150 Students</option>
                         <option>150 - 300 Students</option>
                         <option>300 - 600 Students</option>

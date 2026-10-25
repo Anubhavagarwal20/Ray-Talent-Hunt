@@ -4,6 +4,7 @@ import { InteractiveMouseFollower } from './components/InteractiveMouseFollower'
 import { MotionTicker } from './components/MotionTicker';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { FourQuestsStrip } from './components/FourQuestsStrip';
 import { AboutSection } from './components/AboutSection';
 import { AwardsSection } from './components/AwardsSection';
 import { ExamInfoSection } from './components/ExamInfoSection';
@@ -17,7 +18,13 @@ import { RegistrationModal } from './components/RegistrationModal';
 
 export const App: React.FC = () => {
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
+  const [registerMode, setRegisterMode] = useState<'student' | 'school'>('student');
   const [isResultOpen, setIsResultOpen] = useState(false);
+
+  const handleOpenRegister = (mode: 'student' | 'school' = 'student') => {
+    setRegisterMode(mode);
+    setIsRegisterOpen(true);
+  };
 
   return (
     <div className="min-h-screen relative text-slate-100 flex flex-col font-sans selection:bg-cyan-400 selection:text-slate-950">
@@ -30,17 +37,20 @@ export const App: React.FC = () => {
 
       {/* Navigation */}
       <Navbar
-        onOpenRegister={() => setIsRegisterOpen(true)}
+        onOpenRegister={(mode) => handleOpenRegister(mode || 'student')}
         onOpenResult={() => setIsResultOpen(true)}
       />
 
       {/* Main Content Sections */}
       <main className="flex-1 relative z-10">
-        {/* Hero Section with Interactive 3D Trophy Stage */}
+        {/* Hero Section with Interactive 3D Trophy Stage & Live Quiz Quest */}
         <HeroSection
-          onOpenRegister={() => setIsRegisterOpen(true)}
+          onOpenRegister={() => handleOpenRegister('student')}
           onOpenResult={() => setIsResultOpen(true)}
         />
+
+        {/* 4 Quests Strip & Eduvora Trust Metric Cards */}
+        <FourQuestsStrip />
 
         {/* Infinite Motion Marquee Ribbon */}
         <MotionTicker />
@@ -56,7 +66,8 @@ export const App: React.FC = () => {
 
         {/* School Partnership & Examination Centers */}
         <ForSchoolsSection
-          onOpenSchoolRegister={() => setIsRegisterOpen(true)}
+          onOpenStudentRegister={() => handleOpenRegister('student')}
+          onOpenSchoolRegister={() => handleOpenRegister('school')}
         />
 
         {/* On-ground School Felicitation Gallery & Instagram Reels */}
@@ -67,7 +78,7 @@ export const App: React.FC = () => {
 
         {/* Final Call to Action Panel (from d:\index.html) */}
         <FinalCtaSection
-          onOpenRegister={() => setIsRegisterOpen(true)}
+          onOpenRegister={() => handleOpenRegister('student')}
         />
       </main>
 
@@ -83,6 +94,7 @@ export const App: React.FC = () => {
       <RegistrationModal
         isOpen={isRegisterOpen}
         onClose={() => setIsRegisterOpen(false)}
+        initialType={registerMode}
       />
 
     </div>

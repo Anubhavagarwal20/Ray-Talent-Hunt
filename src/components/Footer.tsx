@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-slate-400 leading-relaxed text-xs">
-              "Nurturing Young Minds, Building Future Leaders" — Empowering school students with diagnostic competitive assessments and 5-tier scholastic honors.
+              Empowering school students with diagnostic competitive assessments and 5-tier scholastic honors.
             </p>
 
             <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-[11px] text-slate-300 space-y-1">

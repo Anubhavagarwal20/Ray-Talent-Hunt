@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ExternalLink, Calendar, MapPin, Play, Sparkles, ArrowUpRight, X, ZoomIn } from 'lucide-react';
 import { InstagramIcon } from './Icons';
 
@@ -21,6 +21,16 @@ export const GallerySection: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedItem(null);
+    };
+    if (selectedItem) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedItem]);
+
   const galleryItems: GalleryItem[] = [
     {
       id: 1,
@@ -32,7 +42,7 @@ export const GallerySection: React.FC = () => {
       title: "Merit Trophy & Excellence Ceremony",
       studentName: "Merit Felicitation Meet",
       description: "Students felicitated on stage with Champions Trophies, Excellence Medals, and Merit Citations before school directors.",
-      image: "/gallery/ceremony-merit.jpg",
+      image: "/gallery/ceremony-smartwatch.jpg",
       instaUrl: "https://www.instagram.com/raytalenthuntolympiad/p/DSCZUEaE5sO/",
       tags: ["#raytalenthuntolympiad", "#citypublicschool", "#excellence"]
     },
@@ -102,7 +112,7 @@ export const GallerySection: React.FC = () => {
       title: "State Excellence & Gold Medals Ceremony",
       studentName: "State Champions",
       description: "State-level champions celebrated with state honor trophies and pure gold medals during morning assembly.",
-      image: "/awards/award-goldmedal.jpg",
+      image: "/gallery/ceremony-trophies.jpg",
       instaUrl: "https://www.instagram.com/raytalenthuntolympiad/",
       tags: ["#statechampions", "#goldmedal", "#excellence"]
     }
@@ -113,24 +123,24 @@ export const GallerySection: React.FC = () => {
     : galleryItems.filter(item => item.category === filter);
 
   return (
-    <section id="gallery" className="py-20 relative z-10">
+    <section id="gallery" className="py-14 sm:py-20 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4 animate-float">
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cyan-300 text-[11px] sm:text-xs font-bold uppercase tracking-wider mb-4 animate-float">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
             <span>Real Student Stories & On-Ground Pride</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-3 sm:mb-4">
             10,000+ PROUD <br />
             <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-amber-300 bg-clip-text text-transparent">
               PARTICIPANTS & TOPPERS!
             </span>
           </h2>
 
-          <p className="text-cyan-100/80 text-sm sm:text-base mb-6">
+          <p className="text-cyan-100/80 text-xs sm:text-base mb-6">
             Over 100+ schools across Uttar Pradesh and India trust Ray Talent Hunt Olympiad to inspire academic confidence and recognize excellence right in school assemblies.
           </p>
 
@@ -138,7 +148,7 @@ export const GallerySection: React.FC = () => {
             href="https://www.instagram.com/raytalenthuntolympiad/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-trendy inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 text-white font-black text-xs uppercase tracking-wider shadow-xl shadow-sky-500/40"
+            className="btn-trendy inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 text-white font-black text-xs uppercase tracking-wider shadow-xl shadow-sky-500/40"
           >
             <InstagramIcon className="w-4 h-4" />
             <span>Explore Instagram Ceremony Reels</span>
@@ -147,7 +157,7 @@ export const GallerySection: React.FC = () => {
         </div>
 
         {/* Filter Pill Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 mb-8 sm:mb-12">
           {[
             { label: 'All Schools', value: 'all' },
             { label: 'Pratapgarh, UP', value: 'pratapgarh' },
@@ -159,7 +169,7 @@ export const GallerySection: React.FC = () => {
             <button
               key={tab.value}
               onClick={() => setFilter(tab.value)}
-              className={`btn-trendy px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold cursor-pointer transition-all ${
+              className={`btn-trendy px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-sm font-bold cursor-pointer transition-all ${
                 filter === tab.value
                   ? 'bg-gradient-to-r from-sky-400 to-blue-600 text-white shadow-xl shadow-sky-500/40 border border-white/40 scale-105'
                   : 'bg-slate-900/60 backdrop-blur-md text-slate-300 hover:text-white border border-white/15'
@@ -171,11 +181,11 @@ export const GallerySection: React.FC = () => {
         </div>
 
         {/* 6-Card Responsive Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
           {filteredItems.map(item => (
             <div
               key={item.id}
-              className="glass-card p-6 sm:p-7 rounded-[32px] flex flex-col justify-between group transition-all hover:border-cyan-400/40"
+              className="glass-card p-4 sm:p-7 rounded-2xl sm:rounded-[32px] flex flex-col justify-between group transition-all hover:border-cyan-400/40"
             >
               <div>
                 {/* Meta Header */}
@@ -190,10 +200,10 @@ export const GallerySection: React.FC = () => {
                   </div>
                 </div>
 
-                {/* AI-Generated Real Award Ceremony Thumbnail */}
+                {/* Real Award Ceremony Thumbnail */}
                 <div 
                   onClick={() => setSelectedItem(item)}
-                  className="relative w-full h-56 rounded-2xl overflow-hidden mb-5 group/img cursor-pointer border border-white/20 shadow-xl group-hover:border-cyan-400/50 transition-all"
+                  className="relative w-full h-44 sm:h-56 rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-5 group/img cursor-pointer border border-white/20 shadow-xl group-hover:border-cyan-400/50 transition-all"
                   title="Click to view high-resolution photo"
                 >
                   <img
@@ -271,6 +281,9 @@ export const GallerySection: React.FC = () => {
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setSelectedItem(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Ceremony image lightbox"
         >
           <div 
             className="relative max-w-4xl w-full bg-slate-900 border border-white/20 rounded-3xl overflow-hidden shadow-2xl"
@@ -286,6 +299,7 @@ export const GallerySection: React.FC = () => {
               <button
                 onClick={() => setSelectedItem(null)}
                 className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+                aria-label="Close image preview"
               >
                 <X className="w-5 h-5" />
               </button>

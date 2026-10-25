@@ -18,6 +18,12 @@ export const TiltCard: React.FC<TiltCardProps> = ({
   const [glarePos, setGlarePos] = useState({ x: 50, y: 50, opacity: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    // Disable tilt on touch or reduced motion
+    if (typeof window !== 'undefined') {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+    }
+
     const card = cardRef.current;
     if (!card) return;
 
@@ -62,6 +68,7 @@ export const TiltCard: React.FC<TiltCardProps> = ({
 
       {/* Dynamic 3D Glare Light Reflection */}
       <div
+        aria-hidden="true"
         className="absolute inset-0 rounded-[inherit] pointer-events-none transition-opacity duration-300 z-10"
         style={{
           opacity: glarePos.opacity,

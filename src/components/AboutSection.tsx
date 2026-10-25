@@ -3,13 +3,13 @@ import { Check } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-24 relative z-10">
+    <section id="about" className="py-14 sm:py-24 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Visual Card with Students Image Showcase & Motifs */}
-          <div className="lg:col-span-5 relative min-h-[460px] rounded-3xl border border-white/20 bg-gradient-to-br from-[#111d3c] to-[#0c1429] p-6 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl group">
+          <div className="lg:col-span-5 relative min-h-[380px] sm:min-h-[460px] rounded-3xl border border-white/20 bg-gradient-to-br from-[#111d3c] to-[#0c1429] p-4 sm:p-8 flex flex-col justify-between overflow-hidden shadow-2xl group">
             {/* Background Students Learning Photograph */}
             <div className="absolute inset-0 z-0">
               <img
@@ -22,52 +22,52 @@ export const AboutSection: React.FC = () => {
 
             {/* Top Floating Badge */}
             <div className="relative z-10 flex items-center justify-between">
-              <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-[11px] font-bold">
+              <span className="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-400/30 text-[10px] sm:text-[11px] font-bold">
                 Malviya Seva Sansthan Patronage
               </span>
               <span className="text-xs text-amber-300 font-bold">Est. 2024</span>
             </div>
 
             {/* Floating 3D Book Graphic */}
-            <div className="relative z-10 flex items-center justify-center py-6">
-              <div className="relative w-48 h-40 -rotate-6 group-hover:rotate-0 transition-transform duration-500">
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-600 to-slate-900 border border-blue-300 shadow-2xl flex items-center justify-center font-black tracking-widest text-2xl text-white">
+            <div className="relative z-10 flex items-center justify-center py-4 sm:py-6">
+              <div className="relative w-40 sm:w-48 h-32 sm:h-40 -rotate-6 group-hover:rotate-0 transition-transform duration-500">
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 via-indigo-600 to-slate-900 border border-blue-300 shadow-2xl flex items-center justify-center font-black tracking-widest text-xl sm:text-2xl text-white">
                   RAY
                 </div>
-                <div className="absolute -top-4 -left-3 inset-0 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-700 border border-cyan-300 shadow-xl opacity-90 flex items-center justify-center font-bold tracking-widest text-base text-slate-950">
+                <div className="absolute -top-3.5 -left-2.5 sm:-top-4 sm:-left-3 inset-0 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-700 border border-cyan-300 shadow-xl opacity-90 flex items-center justify-center font-bold tracking-widest text-sm sm:text-base text-slate-950">
                   LEARN
                 </div>
-                <div className="absolute -top-8 -left-6 inset-0 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-600 border border-amber-200 shadow-lg opacity-85 flex items-center justify-center font-bold tracking-widest text-sm text-slate-950">
+                <div className="absolute -top-7 -left-5 sm:-top-8 sm:-left-6 inset-0 rounded-2xl bg-gradient-to-br from-amber-300 to-yellow-600 border border-amber-200 shadow-lg opacity-85 flex items-center justify-center font-bold tracking-widest text-xs sm:text-sm text-slate-950">
                   ACHIEVE
                 </div>
               </div>
             </div>
 
             {/* Visual Caption Box */}
-            <div className="relative z-10 p-4 rounded-2xl bg-[#0b1428]/90 border border-white/20 backdrop-blur-md shadow-lg">
+            <div className="relative z-10 p-3 sm:p-4 rounded-2xl bg-[#0b1428]/90 border border-white/20 backdrop-blur-md shadow-lg">
               <div className="flex items-center gap-3">
                 <img
                   src="/avatars/student-1.jpg"
                   alt="Student Champion"
-                  className="w-10 h-10 rounded-xl object-cover border border-amber-400/40 shrink-0"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl object-cover border border-amber-400/40 shrink-0"
                 />
-                <div>
-                  <b className="text-white text-sm block">From learning to achievement</b>
-                  <span className="text-xs text-slate-300">A platform that celebrates effort, curiosity and authentic merit</span>
+                <div className="text-left">
+                  <b className="text-white text-xs sm:text-sm block">From learning to achievement</b>
+                  <span className="text-[11px] sm:text-xs text-slate-300">A platform that celebrates effort, curiosity and authentic merit</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Copy (Exact from d:\index.html line 180) */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-4 sm:space-y-6">
             
             <div className="inline-flex items-center gap-2 text-cyan-300 text-xs font-extrabold uppercase tracking-widest">
               <span className="w-5 h-[1px] bg-cyan-400"></span>
               <span>About Ray Talent Hunt</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.08]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-[1.08]">
               A little curiosity can lead to <br />
               <span className="bg-gradient-to-r from-white via-cyan-200 to-sky-400 bg-clip-text text-transparent">
                 big possibilities.
