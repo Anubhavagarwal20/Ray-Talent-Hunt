@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Trophy, Award, Laptop, Tablet, Watch, Medal, FileCheck2, Sparkles, Check, ArrowUpRight } from 'lucide-react';
+import { TiltCard } from './TiltCard';
 
 export const AwardsSection: React.FC = () => {
   const [selectedTier, setSelectedTier] = useState<number>(0);
