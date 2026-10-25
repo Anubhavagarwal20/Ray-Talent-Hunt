@@ -138,61 +138,63 @@ export const AwardsSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Featured Icy Showcase Card */}
-        <div className={`p-8 sm:p-12 rounded-[36px] bg-gradient-to-br from-white/15 via-sky-500/10 to-slate-950/70 backdrop-blur-2xl border ${current.accentBorder} shadow-2xl relative overflow-hidden transition-all duration-300 mb-10`}>
-          <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl ${current.accentGradient} rounded-full blur-3xl pointer-events-none`}></div>
+        {/* Featured Icy Showcase Card with 3D Tilt */}
+        <TiltCard className="mb-10">
+          <div className={`p-8 sm:p-12 rounded-[36px] bg-gradient-to-br from-white/15 via-sky-500/10 to-slate-950/70 backdrop-blur-2xl border ${current.accentBorder} shadow-2xl relative overflow-hidden transition-all duration-300`}>
+            <div className={`absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl ${current.accentGradient} rounded-full blur-3xl pointer-events-none`}></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-            
-            {/* Left Info */}
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3">
-                <span className={`px-3.5 py-1 rounded-full border text-xs font-bold uppercase tracking-wider ${current.badgeColor}`}>
-                  {current.badge}
-                </span>
-                <span className="text-xs text-cyan-200">Tier #{selectedTier + 1} of 5</span>
-              </div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+              
+              {/* Left Info */}
+              <div className="lg:col-span-7 space-y-5">
+                <div className="flex items-center gap-3">
+                  <span className={`px-3.5 py-1 rounded-full border text-xs font-bold uppercase tracking-wider ${current.badgeColor}`}>
+                    {current.badge}
+                  </span>
+                  <span className="text-xs text-cyan-200">Tier #{selectedTier + 1} of 5</span>
+                </div>
 
-              <h3 className="text-2xl sm:text-4xl font-black text-white">
-                {current.prizeTitle}
-              </h3>
+                <h3 className="text-2xl sm:text-4xl font-black text-white">
+                  {current.prizeTitle}
+                </h3>
 
-              <p className="text-xs sm:text-sm text-cyan-100/90">
-                <strong className="text-white">Eligibility:</strong> {current.eligibility}
-              </p>
+                <p className="text-xs sm:text-sm text-cyan-100/90">
+                  <strong className="text-white">Eligibility:</strong> {current.eligibility}
+                </p>
 
-              <div className="space-y-3 pt-3">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                  <span>Included Perks & Entitlements</span>
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {current.perks.map((perk, pIdx) => (
-                    <div key={pIdx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
-                      <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                      <span>{perk}</span>
-                    </div>
-                  ))}
+                <div className="space-y-3 pt-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                    <Sparkles className="w-4 h-4 text-amber-400" />
+                    <span>Included Perks & Entitlements</span>
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {current.perks.map((perk, pIdx) => (
+                      <div key={pIdx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-200">
+                        <Check className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                        <span>{perk}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Right 3D Visual Emblem Card */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl">
-              <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-500/20 to-amber-500/20 border border-white/30 flex items-center justify-center mb-4 shadow-xl animate-float">
-                {current.icon}
+              {/* Right 3D Visual Emblem Card */}
+              <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl">
+                <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-500/20 to-amber-500/20 border border-white/30 flex items-center justify-center mb-4 shadow-xl animate-float">
+                  {current.icon}
+                </div>
+                <h4 className="text-xl font-black text-white mb-1">{current.level}</h4>
+                <p className="text-xs text-amber-300 font-bold mb-4">{current.memento}</p>
+                
+                <div className="w-full pt-4 border-t border-white/10 text-xs text-cyan-200 flex items-center justify-center gap-2">
+                  <FileCheck2 className="w-4 h-4 text-cyan-400" />
+                  <span>Includes Official QR-Verifiable Certificate</span>
+                </div>
               </div>
-              <h4 className="text-xl font-black text-white mb-1">{current.level}</h4>
-              <p className="text-xs text-amber-300 font-bold mb-4">{current.memento}</p>
-              
-              <div className="w-full pt-4 border-t border-white/10 text-xs text-cyan-200 flex items-center justify-center gap-2">
-                <FileCheck2 className="w-4 h-4 text-cyan-400" />
-                <span>Includes Official QR-Verifiable Certificate</span>
-              </div>
-            </div>
 
+            </div>
           </div>
-        </div>
+        </TiltCard>
 
         {/* Universal Participation Certificate Banner */}
         <div className="glass-panel p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
