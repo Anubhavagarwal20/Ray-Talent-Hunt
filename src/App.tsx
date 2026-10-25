@@ -10,6 +10,7 @@ import { ExamInfoSection } from './components/ExamInfoSection';
 import { ForSchoolsSection } from './components/ForSchoolsSection';
 import { GallerySection } from './components/GallerySection';
 import { FaqSection } from './components/FaqSection';
+import { FinalCtaSection } from './components/FinalCtaSection';
 import { Footer } from './components/Footer';
 import { ResultLookupModal } from './components/ResultLookupModal';
 import { RegistrationModal } from './components/RegistrationModal';
@@ -63,6 +64,11 @@ export const App: React.FC = () => {
 
         {/* Frequently Asked Questions */}
         <FaqSection />
+
+        {/* Final Call to Action Panel (from d:\index.html) */}
+        <FinalCtaSection
+          onOpenRegister={() => setIsRegisterOpen(true)}
+        />
       </main>
 
       {/* Footer */}

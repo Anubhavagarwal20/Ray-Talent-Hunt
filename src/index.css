@@ -31,14 +31,6 @@
   }
 }
 
-/* Subtle Perspective Grid (as in SkillNest reference) */
-.bg-perspective-grid {
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 40px 40px;
-}
-
 /* Glassmorphic Icy Panels */
 .glass-panel {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);

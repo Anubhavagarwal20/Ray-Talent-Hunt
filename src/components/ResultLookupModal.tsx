@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Search, Trophy, CheckCircle, Download, AlertCircle, Share2 } from 'lucide-react';
+import { X, Search, CheckCircle, Download, AlertCircle, Share2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface ResultLookupModalProps {
@@ -56,7 +56,7 @@ export const ResultLookupModal: React.FC<ResultLookupModalProps> = ({ isOpen, on
         percentile: "98.6%",
         nationalRank: 12,
         stateRank: 2,
-        awardTier: "State Topper (Gold Medal & Learning Tablet)",
+        awardTier: "State Topper (State Champion Trophy & Gold Medal)",
         status: "Qualified with High Merit"
       });
 
@@ -167,13 +167,20 @@ export const ResultLookupModal: React.FC<ResultLookupModalProps> = ({ isOpen, on
               
               {/* Confetti Banner */}
               <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-                <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold mb-1">
-                    <CheckCircle className="w-3 h-3" />
-                    <span>{resultData.status}</span>
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/avatars/student-1.jpg"
+                    alt={resultData.name}
+                    className="w-12 h-12 rounded-2xl object-cover border border-amber-400/40 shadow shrink-0"
+                  />
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold mb-1">
+                      <CheckCircle className="w-3 h-3" />
+                      <span>{resultData.status}</span>
+                    </div>
+                    <h4 className="text-xl font-extrabold text-white">{resultData.name}</h4>
+                    <p className="text-xs text-slate-400">{resultData.standard} • {resultData.school}, {resultData.city}</p>
                   </div>
-                  <h4 className="text-xl font-extrabold text-white">{resultData.name}</h4>
-                  <p className="text-xs text-slate-400">{resultData.standard} • {resultData.school}, {resultData.city}</p>
                 </div>
 
                 <div className="text-right">
@@ -207,7 +214,11 @@ export const ResultLookupModal: React.FC<ResultLookupModalProps> = ({ isOpen, on
 
               {/* Rank & Award Recognition */}
               <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-400/30 flex items-start gap-3">
-                <Trophy className="w-6 h-6 text-amber-400 shrink-0 mt-0.5" />
+                <img
+                  src="/awards/award-tablet.jpg"
+                  alt="State Award Package"
+                  className="w-12 h-12 rounded-xl object-cover border border-amber-400/40 shrink-0"
+                />
                 <div>
                   <span className="text-xs font-bold text-amber-300 block">Award Recognition:</span>
                   <span className="text-sm font-extrabold text-white">{resultData.awardTier}</span>
@@ -263,7 +274,7 @@ export const ResultLookupModal: React.FC<ResultLookupModalProps> = ({ isOpen, on
           <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-slate-900/60 border border-slate-800 text-xs text-slate-400">
             <AlertCircle className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
             <span>
-              All digital scorecards and certificates issued by Ray Talent Hunt Olympiad are signed and protected with an encrypted verification code for school and scholarship audits.
+              All digital scorecards and certificates issued by Ray Talent Hunt Olympiad are signed and protected with an encrypted verification code for school and academic merit audits.
             </span>
           </div>
 

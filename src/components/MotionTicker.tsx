@@ -1,13 +1,13 @@
 import React from 'react';
-import { Trophy, Star, Award, School, Sparkles, Laptop, ShieldCheck } from 'lucide-react';
+import { Trophy, Star, Award, School, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const MotionTicker: React.FC = () => {
   const items = [
     { icon: <Trophy className="w-4 h-4 text-amber-400" />, text: "5-Tier Merit Recognition Ladder" },
     { icon: <Star className="w-4 h-4 text-cyan-300" />, text: "Supported by Malviya Seva Sansthan" },
-    { icon: <Laptop className="w-4 h-4 text-amber-400" />, text: "National Toppers: Brand-New Laptops & ₹51,000" },
+    { icon: <Trophy className="w-4 h-4 text-amber-400" />, text: "National Toppers: National Champion Trophies & Honors" },
     { icon: <School className="w-4 h-4 text-sky-400" />, text: "City Public School, Pratapgarh (UP)" },
-    { icon: <Award className="w-4 h-4 text-amber-300" />, text: "State Toppers: Learning Tablets & Gold Medals" },
+    { icon: <Award className="w-4 h-4 text-amber-300" />, text: "State Toppers: State Champion Trophies & Gold Medals" },
     { icon: <School className="w-4 h-4 text-cyan-400" />, text: "St. Joseph's Convent School, Varanasi (UP)" },
     { icon: <ShieldCheck className="w-4 h-4 text-emerald-400" />, text: "Diagnostic SPR & QR-Verifiable E-Certificates" },
     { icon: <School className="w-4 h-4 text-indigo-400" />, text: "Savitri Convent High School, Jaunpur (UP)" },

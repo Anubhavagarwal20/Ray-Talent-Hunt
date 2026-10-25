@@ -1,85 +1,93 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const faqs = [
     {
-      q: "Who is eligible to participate in the Ray Talent Hunt Olympiad?",
-      a: "The Olympiad is open to students studying in Class 1 through Class 10 from any recognized educational board (CBSE, ICSE, UP Board, and other state boards). Students can participate either through their enrolled school or via direct registration on this portal."
+      q: "Which classes is Ray Talent Hunt for?",
+      a: "The Olympiad is designed for students in Classes 1 through 10 from any recognized board (CBSE, ICSE, UP Board, and State Boards)."
     },
     {
-      q: "What is the organization structure and role of Malviya Seva Sansthan?",
-      a: "Ray Talent Hunt Olympiad operates under the esteemed support and patronage of Malviya Seva Sansthan—a registered welfare organization dedicated to youth development, quality education access, and scholarship opportunities across India."
+      q: "Which subjects and learning areas are covered?",
+      a: "The three core learning areas are General Knowledge, Mathematics and English, emphasizing conceptual understanding, problem-solving, and critical thinking."
     },
     {
-      q: "What subjects and examination format are included?",
-      a: "The test consists of 50 Multiple Choice Questions (MCQs) administered over 60 minutes across 4 core sections: Mathematics (15 Qs), Science (15 Qs), Mental Ability & Logical Reasoning (10 Qs), and English Comprehension (10 Qs). The syllabus is strictly aligned with the NCERT curriculum of each corresponding class."
+      q: "What is the role of Malviya Seva Sansthan?",
+      a: "Ray Talent Hunt Olympiad operates under the esteemed support and patronage of Malviya Seva Sansthan—a registered welfare organization dedicated to youth development, quality education access, and scholarship opportunities."
     },
     {
-      q: "What are the 5 tiers of awards and scholarships?",
-      a: "Awards are categorized into: 1. National Topper (Laptops, Grand Scholarships, Champion Trophies), 2. State Topper (Learning Tablets, State Grants, Gold Medals), 3. Zone Topper (Smart Fitness Watches, Silver Medals), 4. District Topper (STEM Educational Kits, Bronze Medals), and 5. School Topper (Class Champion Medals & School Honors). Every participant receiving a rank gets an official Certificate of Merit."
+      q: "What are the 5 tiers of scholarships and awards?",
+      a: "Awards are categorized into: 1. National Topper (Laptops, Grand Cash Scholarships, Champion Trophies), 2. State Topper (Learning Tablets, State Grants, Gold Medals), 3. Zone Topper (Smart Fitness Watches, Silver Medals), 4. District Topper (STEM Educational Kits, Bronze Medals), and 5. School Topper (Class Champion Medals & School Honors). Every participant receiving a rank gets an official Certificate of Merit."
     },
     {
-      q: "How are the examinations conducted?",
-      a: "For participating partner schools, examinations are conducted offline within the school premises using standard OMR answer sheets during school hours. Independent individual applicants can opt for the secure online testing portal."
+      q: "Can schools learn more about participation and exam centers?",
+      a: "Yes. Schools can submit the 'School Center' form on this website or call our support line at +91 7236008947. We provide printed OMR booklets, handle logistics, and organize in-person award ceremonies at your morning school assembly."
     },
     {
-      q: "How can I check my Olympiad result and download my admit card?",
-      a: "You can click the 'Check Result / Admit Card' button in the navigation bar and enter your registered Roll Number or 10-digit mobile number. You can instantly view your sectional scorecard, rank breakdown, and download your verifiable E-Certificate."
-    },
-    {
-      q: "How can a school become a registered examination center?",
-      a: "School Principals or Coordinators can submit the 'School Center' form on this website or call our support lines at +91 7236008947 / +91 8448198656. We coordinate all logistics, student kits, and organize in-person award ceremonies at your campus."
+      q: "Where should families look for official updates?",
+      a: "Families can follow the official Instagram profile (@raytalenthuntolympiad) and check results directly on this portal using their roll number."
     }
   ];
 
   return (
-    <section id="faq" className="py-20 relative z-10">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="faq" className="py-24 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-cyan-300 text-xs font-bold uppercase tracking-wider mb-4 animate-float">
-            <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Got Questions?</span>
+        {/* Section Head (Exact from d:\index.html line 215) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <div className="lg:col-span-5 text-left">
+            <div className="inline-flex items-center gap-2 text-cyan-300 text-xs font-extrabold uppercase tracking-widest mb-3">
+              <span className="w-5 h-[1px] bg-cyan-400"></span>
+              <span>Quick answers</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-[1.08] mb-4">
+              Clear information.<br />
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-sky-400 bg-clip-text text-transparent">
+                More confident families.
+              </span>
+            </h2>
+
+            <p className="text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+              Here are the essentials confirmed for the Ray Talent Hunt Olympiad. For any specific queries, our helpline is always open.
+            </p>
+
+            <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs text-slate-300">
+              Helpline: <strong className="text-white">+91 7236008947</strong> / <strong className="text-white">+91 8448198656</strong>
+            </div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            FREQUENTLY ASKED QUESTIONS
-          </h2>
-          <p className="text-cyan-100/80 text-sm sm:text-base">
-            Everything you need to know about Ray Talent Hunt Olympiad, eligibility, exams, and awards.
-          </p>
-        </div>
-
-        {/* Accordion List */}
-        <div className="space-y-3.5">
-          {faqs.map((faq, idx) => (
-            <div
-              key={idx}
-              className="glass-panel rounded-2xl overflow-hidden transition-all duration-300"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
-                className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer"
+          {/* Accordion (from d:\index.html line 215) */}
+          <div className="lg:col-span-7 space-y-3">
+            {faqs.map((faq, idx) => (
+              <div
+                key={idx}
+                className="glass-card rounded-2xl overflow-hidden border border-white/10"
               >
-                <span>{faq.q}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-cyan-400 transition-transform duration-200 shrink-0 ${
-                    openIndex === idx ? 'rotate-180 text-amber-300' : ''
-                  }`}
-                />
-              </button>
+                <button
+                  onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-bold text-sm sm:text-base text-white hover:text-cyan-300 transition-colors cursor-pointer"
+                >
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    className={`w-5 h-5 text-cyan-400 transition-transform duration-200 shrink-0 ${
+                      openIndex === idx ? 'rotate-180 text-amber-300' : ''
+                    }`}
+                  />
+                </button>
 
-              {openIndex === idx && (
-                <div className="px-5 pb-5 text-xs sm:text-sm text-cyan-100/90 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in duration-150">
-                  {faq.a}
-                </div>
-              )}
-            </div>
-          ))}
+                {openIndex === idx && (
+                  <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-white/10 pt-3 animate-in fade-in duration-150">
+                    {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trophy, Award, Laptop, Tablet, Watch, Medal, FileCheck2, Sparkles, Check, ArrowUpRight } from 'lucide-react';
+import { Trophy, Award, Medal, FileCheck2, Sparkles, Check, ArrowUpRight } from 'lucide-react';
 import { TiltCard } from './TiltCard';
 
 export const AwardsSection: React.FC = () => {
@@ -12,15 +12,16 @@ export const AwardsSection: React.FC = () => {
       badgeColor: "bg-amber-400/20 text-amber-300 border-amber-400/40",
       accentBorder: "border-amber-400/50 shadow-amber-500/20",
       accentGradient: "from-amber-400/20 via-yellow-400/10 to-transparent",
-      icon: <Laptop className="w-10 h-10 text-amber-400" />,
-      prizeTitle: "Premium Laptop + ₹51,000 Grand Scholarship",
+      icon: <Trophy className="w-5 h-5 text-amber-400" />,
+      image: "/awards/award-trophy.jpg",
+      awardTitle: "National Champion Trophy & Grand Felicitation",
       memento: "National Champion Trophy of Excellence",
       eligibility: "Top rankers across all participating schools nationwide",
       perks: [
-        "Brand-New High Performance Laptop",
-        "Direct Cash Scholarship Assistance",
-        "National Level Merit Champion Trophy",
+        "National Champion Grand Trophy",
+        "Gold Emblem Medal of Scholastic Excellence",
         "Hall of Fame Feature on Official Portal",
+        "Special Stage Felicitation & Commendation",
         "Official Certificate with Holographic QR Seal"
       ]
     },
@@ -30,16 +31,17 @@ export const AwardsSection: React.FC = () => {
       badgeColor: "bg-cyan-400/20 text-cyan-300 border-cyan-400/40",
       accentBorder: "border-cyan-400/50 shadow-cyan-500/20",
       accentGradient: "from-cyan-400/20 via-sky-400/10 to-transparent",
-      icon: <Tablet className="w-10 h-10 text-cyan-300" />,
-      prizeTitle: "Learning Tablet + State Scholarship Grant",
+      icon: <Medal className="w-5 h-5 text-cyan-300" />,
+      image: "/gallery/ceremony-trophies.jpg",
+      awardTitle: "State Excellence Trophy & Gold Medal of Honor",
       memento: "Pure Gold Medal of Scholastic Excellence",
       eligibility: "Top state-level rankers in Uttar Pradesh and regional states",
       perks: [
-        "Digital Educational Tablet Device",
-        "State Level Cash Scholarship",
+        "State Level Champion Trophy",
         "Pure Golden Finish Excellence Medal",
         "School Assembly Felicitation Ceremony",
-        "State Merit Certificate with Score Breakdown"
+        "State Merit Certificate with Score Breakdown",
+        "Honors Listing in State Merit Board"
       ]
     },
     {
@@ -48,16 +50,17 @@ export const AwardsSection: React.FC = () => {
       badgeColor: "bg-blue-400/20 text-blue-300 border-blue-400/40",
       accentBorder: "border-blue-400/50 shadow-blue-500/20",
       accentGradient: "from-blue-400/20 via-indigo-400/10 to-transparent",
-      icon: <Watch className="w-10 h-10 text-sky-400" />,
-      prizeTitle: "Smart Fitness Watch + Zonal Merit Award",
+      icon: <Award className="w-5 h-5 text-sky-400" />,
+      image: "/gallery/ceremony-medals.jpg",
+      awardTitle: "Zonal Distinction Trophy & Silver Medal",
       memento: "Silver Medal of Distinction",
       eligibility: "Top performers across designated zonal educational clusters",
       perks: [
-        "Multi-Feature Smart Digital Watch",
+        "Zonal Champion Trophy & Accolades",
         "Silver Excellence Medal of Honor",
         "Zonal Recognition Commendation",
         "Comprehensive Diagnostic Analysis Report (SPR)",
-        "Priority Entry to Advanced Olympiad Rounds"
+        "Special Merit Citation Certificate"
       ]
     },
     {
@@ -66,15 +69,17 @@ export const AwardsSection: React.FC = () => {
       badgeColor: "bg-emerald-400/20 text-emerald-300 border-emerald-400/40",
       accentBorder: "border-emerald-400/50 shadow-emerald-500/20",
       accentGradient: "from-emerald-400/20 via-teal-400/10 to-transparent",
-      icon: <Award className="w-10 h-10 text-emerald-400" />,
-      prizeTitle: "STEM Resource Kit + District Merit Honors",
+      icon: <Award className="w-5 h-5 text-emerald-400" />,
+      image: "/gallery/ceremony-spr.jpg",
+      awardTitle: "District Pride Trophy & Bronze Medal",
       memento: "Bronze Medal of Achievement",
       eligibility: "Top scoring students in Varanasi, Pratapgarh, Jaunpur & regional districts",
       perks: [
-        "Curated Academic STEM Resource Kit",
+        "District Topper Honor Trophy",
         "Bronze Achievement Medal",
         "District Topper Merit Citation",
-        "School-Level Honor Roll Publication"
+        "School-Level Honor Roll Publication",
+        "District Level Certificate of Excellence"
       ]
     },
     {
@@ -83,8 +88,9 @@ export const AwardsSection: React.FC = () => {
       badgeColor: "bg-rose-400/20 text-rose-300 border-rose-400/40",
       accentBorder: "border-rose-400/50 shadow-rose-500/20",
       accentGradient: "from-rose-400/20 via-orange-400/10 to-transparent",
-      icon: <Medal className="w-10 h-10 text-rose-400" />,
-      prizeTitle: "School Champion Trophy & Gold Medal",
+      icon: <Medal className="w-5 h-5 text-rose-400" />,
+      image: "/awards/award-trophy.jpg",
+      awardTitle: "School Champion Trophy & Merit Medal",
       memento: "Class Topper Honor Badge",
       eligibility: "Highest rankers within each respective participating school",
       perks: [
@@ -110,9 +116,9 @@ export const AwardsSection: React.FC = () => {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4">
-            Prestigious Awards, <br />
+            Prestigious Awards & <br />
             <span className="bg-gradient-to-r from-sky-300 via-cyan-200 to-amber-300 bg-clip-text text-transparent">
-              Laptops & Cash Scholarships
+              Merit Recognition Honors
             </span>
           </h2>
 
@@ -121,19 +127,24 @@ export const AwardsSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 5-Tier Frosted Pill Switcher (Inspired by SkillNest Tab Styling) */}
+        {/* 5-Tier Frosted Pill Switcher with Mini Thumbnails */}
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
           {awardTiers.map((tier, idx) => (
             <button
               key={idx}
               onClick={() => setSelectedTier(idx)}
-              className={`btn-trendy px-5 py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer transition-all ${
+              className={`btn-trendy px-4 sm:px-5 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold cursor-pointer transition-all flex items-center gap-2.5 ${
                 selectedTier === idx
                   ? 'bg-gradient-to-r from-sky-400 to-blue-600 text-white shadow-xl shadow-sky-500/40 border border-white/40 scale-105'
                   : 'bg-slate-900/60 backdrop-blur-md text-slate-300 hover:text-white border border-white/15'
               }`}
             >
-              {tier.level}
+              <img
+                src={tier.image}
+                alt={tier.level}
+                className="w-5 h-5 rounded-full object-cover border border-white/30"
+              />
+              <span>{tier.level}</span>
             </button>
           ))}
         </div>
@@ -155,7 +166,7 @@ export const AwardsSection: React.FC = () => {
                 </div>
 
                 <h3 className="text-2xl sm:text-4xl font-black text-white">
-                  {current.prizeTitle}
+                  {current.awardTitle}
                 </h3>
 
                 <p className="text-xs sm:text-sm text-cyan-100/90">
@@ -178,15 +189,32 @@ export const AwardsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right 3D Visual Emblem Card */}
-              <div className="lg:col-span-5 flex flex-col items-center justify-center p-8 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl">
-                <div className="w-24 h-24 rounded-3xl bg-gradient-to-tr from-sky-500/20 to-amber-500/20 border border-white/30 flex items-center justify-center mb-4 shadow-xl animate-float">
-                  {current.icon}
+              {/* Right Visual Product & Award Showcase Card */}
+              <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-3xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-center shadow-xl relative overflow-hidden group/showcase">
+                {/* Product / Trophy Image with subtle zoom */}
+                <div className="relative w-full h-60 rounded-2xl overflow-hidden border border-white/20 mb-4 shadow-xl">
+                  <img
+                    src={current.image}
+                    alt={current.awardTitle}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover/showcase:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  
+                  {/* Floating Tier Emblem on Top Left */}
+                  <div className="absolute top-3 left-3 p-2.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/30 text-white shadow-lg">
+                    {current.icon}
+                  </div>
+
+                  {/* Award Tag on Bottom Right */}
+                  <div className="absolute bottom-3 right-3 px-3 py-1 rounded-full bg-slate-950/90 backdrop-blur-md border border-amber-400/50 text-[11px] font-bold text-amber-300 shadow">
+                    Official Award Package
+                  </div>
                 </div>
+
                 <h4 className="text-xl font-black text-white mb-1">{current.level}</h4>
                 <p className="text-xs text-amber-300 font-bold mb-4">{current.memento}</p>
                 
-                <div className="w-full pt-4 border-t border-white/10 text-xs text-cyan-200 flex items-center justify-center gap-2">
+                <div className="w-full pt-3 border-t border-white/10 text-xs text-cyan-200 flex items-center justify-center gap-2">
                   <FileCheck2 className="w-4 h-4 text-cyan-400" />
                   <span>Includes Official QR-Verifiable Certificate</span>
                 </div>

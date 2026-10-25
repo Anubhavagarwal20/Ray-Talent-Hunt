@@ -129,6 +129,23 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({ isOpen, on
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Mini Reward Visual Banner */}
+              <div className="flex items-center gap-3 p-3 rounded-2xl bg-slate-900/80 border border-white/10">
+                <img
+                  src={regType === 'student' ? "/awards/award-laptop.jpg" : "/about/school-campus.jpg"}
+                  alt="Registration"
+                  className="w-12 h-12 rounded-xl object-cover border border-amber-400/40 shrink-0"
+                />
+                <div className="text-left text-xs">
+                  <span className="font-extrabold text-white block">
+                    {regType === 'student' ? 'Compete for Laptops, Tabs & Medals' : 'Institutional Examination Center Setup'}
+                  </span>
+                  <span className="text-[11px] text-slate-300 block">
+                    {regType === 'student' ? 'Classes 1 to 10 • In-Assembly Felicitation' : 'Complete OMR Question Paper & Report Support'}
+                  </span>
+                </div>
+              </div>
+
               {regType === 'student' ? (
                 <>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

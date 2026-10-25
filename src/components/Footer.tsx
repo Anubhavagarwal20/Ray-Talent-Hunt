@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               />
               <div>
                 <span className="text-lg font-black text-white tracking-tight block">RAY TALENT HUNT</span>
-                <span className="text-[10px] text-amber-300 font-bold tracking-wider uppercase">OLYMPIAD & SCHOLARSHIP PLATFORM</span>
+                <span className="text-[10px] text-amber-300 font-bold tracking-wider uppercase">OLYMPIAD & MERIT PLATFORM</span>
               </div>
             </div>
 
@@ -51,11 +51,11 @@ export const Footer: React.FC = () => {
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Award Tiers</h4>
             <ul className="space-y-2 text-slate-400">
-              <li><span className="text-amber-300 font-semibold">1. National Topper</span> (Laptop)</li>
-              <li><span className="text-cyan-300 font-semibold">2. State Topper</span> (Tablet)</li>
-              <li><span className="text-indigo-300 font-semibold">3. Zone Topper</span> (Smartwatch)</li>
-              <li><span className="text-emerald-300 font-semibold">4. District Topper</span> (STEM Kit)</li>
-              <li><span className="text-rose-300 font-semibold">5. School Topper</span> (Medal)</li>
+              <li><span className="text-amber-300 font-semibold">1. National Topper</span> (Champion Trophy)</li>
+              <li><span className="text-cyan-300 font-semibold">2. State Topper</span> (Gold Medal)</li>
+              <li><span className="text-indigo-300 font-semibold">3. Zone Topper</span> (Silver Medal)</li>
+              <li><span className="text-emerald-300 font-semibold">4. District Topper</span> (Bronze Medal)</li>
+              <li><span className="text-rose-300 font-semibold">5. School Topper</span> (Merit Medal)</li>
               <li><span className="text-slate-300">Participation Certificates</span></li>
             </ul>
           </div>
